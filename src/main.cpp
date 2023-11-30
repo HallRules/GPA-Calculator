@@ -2,6 +2,7 @@
 #include <vector>
 #include "funcs.h"
 #include "classes.h"
+#include "prompts.h"
 using namespace std;
 
 // GPA Calculator by Michael Hall for FBLA 2023
@@ -36,19 +37,19 @@ int main_loop() {
     
     // Since C++ doesn't support switch/case for strings, I had to spam if/else statements
     if (command == "add") {
-        
+        addClass_prompt(*classes);
     }
     else if (command == "remove") {
-        
+        removeClass_prompt(*classes);
     }
     else if (command == "edit") {
-        
+        editClass_prompt(*classes);
     }
     else if (command == "list") {
-        
+        listClasses(*classes);
     }
     else if (command == "calculate") {
-        
+        calculateGPA_prompt(*classes);
     }
     else if (command == "quit") {
         // This breaks the loop to start the saving and quitting process

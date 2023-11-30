@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 using namespace std;
 
 // This is the enum type for the class type
