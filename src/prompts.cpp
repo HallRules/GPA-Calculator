@@ -175,6 +175,3 @@ void editClass_prompt(vector<GPA_Class>& classes) {
 void loadClasses_prompt(vector<GPA_Class>& classes) {
 
 }
-void calculateGPA_prompt(vector<GPA_Class>& classes) {
-    
-}

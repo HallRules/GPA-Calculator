@@ -7,6 +7,9 @@
 #include "classes.h"
 using namespace std;
 
+// Also if you're wondering why I don't put const for the GPA_Class vectors,
+// it's because it just doesn't compile and I have no clue why
+
 // The actual code for the functions defined in funcs.h
 string strToLower(const string& str) {
     string newStr = "";
@@ -76,8 +79,31 @@ void listClasses(vector<GPA_Class>& classes) {
     }
     cout << "\n\n";
 }
-void calculateGPA(const vector<GPA_Class>& classes, bool weighted){
-
+void calculateGPA(vector<GPA_Class>& classes){
+    // For unweighted, just add up all the grades and divide by the number of classes
+    // And for weighted, we add 0.5 to the grade if it's honors and 1.0 if it's AP/Dual
+    
+    // The reason why I subtract 48 every time is because the ASCII value of '0' is 48
+    double unweighted = 0, weighted = 0;
+    for (int i = 0; i < classes.size(); i++) {
+        unweighted += classes[i].getGrade()-48;
+        switch (classes[i].getClassType()) {
+        case classType::regular:
+            weighted += classes[i].getGrade();
+            break;
+        case classType::honors:
+            weighted += int(classes[i].getGrade())-48 + 0.5;
+            break;
+        case classType::ap:
+        case classType::dual:
+            weighted += int(classes[i].getGrade())-48 + 1.0;
+            break;
+        }
+    }
+    unweighted /= classes.size();
+    weighted /= classes.size();
+    // I use printf here because I want to truncate after 1 decimal place
+    printf("Unweighted GPA: %.1f\nWeighted GPA: %.1f\n\n", unweighted, weighted);
 }
 void loadClasses(const string& filename, vector<GPA_Class>& classes) {
     ifstream loadfile;

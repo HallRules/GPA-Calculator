@@ -13,6 +13,6 @@ void printClassByName(const string& course_name, vector<GPA_Class>& classes);
 void addClass(vector<GPA_Class>& classes, const string& course_name, char grade, classType class_type);
 void removeClass(vector<GPA_Class>& classes, const string& course_name);
 void listClasses(vector<GPA_Class>& classes);
-void calculateGPA(vector<GPA_Class>& classes, bool weighted);
+void calculateGPA(vector<GPA_Class>& classes);
 void loadClasses(const string& filename, vector<GPA_Class>& classes);
 void saveClasses(const string& filename, vector<GPA_Class>& classes);

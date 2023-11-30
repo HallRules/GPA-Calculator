@@ -26,7 +26,7 @@ int main_loop() {
     cout << "edit: Edits a class in the list of classes\n";
     cout << "load: Loads a savefile with the given name (has to be in the same directory)\n";
     cout << "list: Lists all the classes in the list of classes\n";
-    cout << "calculate: Calculates the GPA of the classes in the list of classes, with either weighted or unweighted GPA\n";
+    cout << "calculate: Calculates the GPA of the classes in the list of classes, both weighted and unweighted\n";
     cout << "quit: Quits the program with the option to save\n\n\n";
 
     string command;
@@ -51,7 +51,7 @@ int main_loop() {
         loadClasses_prompt(classes);
     }
     else if (command == "calculate") {
-        calculateGPA_prompt(classes);
+        calculateGPA(classes);
     }
     else if (command == "quit") {
         // This breaks the loop to start the saving and quitting process
