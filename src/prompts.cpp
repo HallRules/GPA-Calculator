@@ -6,9 +6,9 @@ using namespace std;
 
 void addClass_prompt(vector<GPA_Class>& classes) {
     system("cls");
-    cout << "Enter the name of the class (case sensitive): ";
+    cout << "Enter the name of the class (case sensitive):\n";
     string course_name;
-    cin >> course_name;
+    getline(cin, course_name);
     for (int i = 0; i < classes.size(); i++) {
         if (classes[i].getCourseName() == course_name) {
             cout << "A class with that name already exists. Please try again.\n";
@@ -57,9 +57,9 @@ void removeClass_prompt(vector<GPA_Class>& classes) {
     system("cls");
     cout << "List of classes:\n";
     listClasses(classes);
-    cout << "\n\nEnter the name of the class you want to remove (case sensitive): ";
+    cout << "\n\nEnter the name of the class you want to remove (case sensitive):\n";
     string course_name;
-    cin >> course_name;
+    getline(cin, course_name);
     system("cls");
     for (int i = 0; i < classes.size(); i++) {
         if (classes[i].getCourseName() == course_name) {
