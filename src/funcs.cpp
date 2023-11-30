@@ -111,26 +111,9 @@ int loadClasses(const string& filename, vector<GPA_Class>& classes) {
         cout << "Error opening file \"" << filename << "\"\n";
         return -1;
     }
-    string line;
-    int count = 0;
     string course_name, grade, class_type_str;
-    while (getline(cin, line)) {
-        count++;
-        switch (count) {
-        case 1: // Course name
-            course_name = line;
-            break;
-        case 2: // Grade
-            grade = line;
-            break;
-        case 3: // Class type
-            class_type_str = line;
-            break;
-        case 4:
-            count = 0;
-            // If I get points deducted for not checking the input from the save file let me know
-            classes.push_back(GPA_Class(course_name, toupper(grade[0]), (classType)stoi(class_type_str)));
-        }
+    while (getline(loadfile, course_name) && getline(loadfile, grade) && getline(loadfile, class_type_str)) {
+        classes.push_back(GPA_Class(course_name, grade[0], (classType)stoi(class_type_str)));
     }
     loadfile.close();
     return 1;
