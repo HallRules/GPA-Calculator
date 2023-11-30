@@ -80,23 +80,22 @@ void listClasses(vector<GPA_Class>& classes) {
     cout << "\n\n";
 }
 void calculateGPA(vector<GPA_Class>& classes){
+    system("cls");
     // For unweighted, just add up all the grades and divide by the number of classes
     // And for weighted, we add 0.5 to the grade if it's honors and 1.0 if it's AP/Dual
-    
-    // The reason why I subtract 48 every time is because the ASCII value of '0' is 48
     double unweighted = 0, weighted = 0;
     for (int i = 0; i < classes.size(); i++) {
-        unweighted += classes[i].getGrade()-48;
+        unweighted += classes[i].getGradeNum();
         switch (classes[i].getClassType()) {
         case classType::regular:
-            weighted += classes[i].getGrade();
+            weighted += classes[i].getGradeNum();
             break;
         case classType::honors:
-            weighted += int(classes[i].getGrade())-48 + 0.5;
+            weighted += classes[i].getGradeNum() + 0.5;
             break;
         case classType::ap:
         case classType::dual:
-            weighted += int(classes[i].getGrade())-48 + 1.0;
+            weighted += classes[i].getGradeNum() + 1.0;
             break;
         }
     }

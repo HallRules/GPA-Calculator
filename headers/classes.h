@@ -31,6 +31,23 @@ public:
         return grade;
     }
 
+    int getGradeNum() {
+        switch (grade) {
+        case 'A':
+            return 4;
+        case 'B':
+            return 3;
+        case 'C':
+            return 2;
+        case 'D':
+            return 1;
+        case 'F':
+            return 0;
+        default:
+            return -1;
+        }
+    }
+
     classType getClassType() {
         return class_type;
     }
