@@ -1,6 +1,7 @@
 #pragma once
 #include "classes.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 // Definitions for the functions used in main.cpp
