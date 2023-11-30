@@ -14,13 +14,10 @@ string strToLower(const string& str) {
     }
     return newStr;
 }
-void listClasses(const vector<GPA_Class*>& classes) {
+void listClasses(const vector<GPA_Class>& classes) {
     system("cls");
-    for (int i = 0; i < classes.size(); i++) {
-        cout << classes[i]->getCourseName() << endl;
-    }
 }
-void saveClasses(const string& filename, const vector<GPA_Class*>& classes) {
+void saveClasses(const string& filename, const vector<GPA_Class>& classes) {
     ofstream savefile;
     savefile.open(filename);
     // put stuffs here

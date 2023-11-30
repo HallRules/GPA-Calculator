@@ -18,7 +18,7 @@ TODO:
 */
 
 // This is the array that stores all the classes that the user wants to calculate for
-vector<GPA_Class*> *classes;
+vector<GPA_Class> classes;
 
 // The main loop that handles the commands
 int main_loop() {
@@ -37,19 +37,19 @@ int main_loop() {
     
     // Since C++ doesn't support switch/case for strings, I had to spam if/else statements
     if (command == "add") {
-        addClass_prompt(*classes);
+        addClass_prompt(classes);
     }
     else if (command == "remove") {
-        removeClass_prompt(*classes);
+        removeClass_prompt(classes);
     }
     else if (command == "edit") {
-        editClass_prompt(*classes);
+        editClass_prompt(classes);
     }
     else if (command == "list") {
-        listClasses(*classes);
+        listClasses(classes);
     }
     else if (command == "calculate") {
-        calculateGPA_prompt(*classes);
+        calculateGPA_prompt(classes);
     }
     else if (command == "quit") {
         // This breaks the loop to start the saving and quitting process
@@ -65,13 +65,6 @@ int main_loop() {
 }
 
 int main() {
-    // Initializing the array of classes
-    vector<GPA_Class*> *classes = new vector<GPA_Class*>;
-    if (!classes) {
-        cout << "Error: Could not allocate memory for classes array.\n";
-        return 1;
-    }
-
     // Breaks when return is less than 1, which is when the user wants to quit
     while (main_loop());
 
@@ -80,13 +73,11 @@ int main() {
     string save;
     cin >> save;
     if (tolower(save[0]) == 'n') {
-        delete classes;
         return 0;
     }
     cout << "Enter the name for the savefile: ";
     string savefile_name;
     cin >> savefile_name;
-    saveClasses(savefile_name, *classes);
-    delete classes;
+    saveClasses(savefile_name, classes);
     return 0;
 }
