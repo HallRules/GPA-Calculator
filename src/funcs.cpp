@@ -14,7 +14,7 @@ string strToLower(const string& str) {
     return newStr;
 }
 
-void saveClasses(const string& filename, const vector<GPA_Class>& classes) {
+void saveClasses(const string& filename, const vector<GPA_Class*>& classes) {
     ofstream savefile;
     savefile.open(filename);
     // put stuffs here
