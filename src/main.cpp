@@ -6,13 +6,7 @@
 using namespace std;
 
 // GPA Calculator by Michael Hall for FBLA 2023
-
-/*
-TODO:
-- Add the ability to edit classes (by name)
-- Add the ability to calculate the total GPA
-- Add the ability to save and load classes from a savefile
-*/
+// 11-28-2023
 
 // This is the array that stores all the classes that the user wants to calculate for
 vector<GPA_Class> classes;

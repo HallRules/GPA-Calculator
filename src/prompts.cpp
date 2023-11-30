@@ -173,5 +173,14 @@ void editClass_prompt(vector<GPA_Class>& classes) {
     }
 }
 void loadClasses_prompt(vector<GPA_Class>& classes) {
-
+    system("cls");
+    cout << "Enter the name of the savefile (has to be in the same directory):\n";
+    string filename;
+    getline(cin, filename);
+    if (loadClasses(filename, classes)) {
+        cout << "Savefile \"" << filename << "\" loaded successfully.\n\n";
+    }
+    else {
+        cout << "Savefile \"" << filename << "\" not found or another error occured while loading.\nTry typing the command \"quit\" and saving to create a savefile, then try again.\n\n";
+    }
 }

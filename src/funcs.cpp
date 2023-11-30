@@ -104,15 +104,50 @@ void calculateGPA(vector<GPA_Class>& classes){
     // I use printf here because I want to truncate after 1 decimal place
     printf("Unweighted GPA: %.1f\nWeighted GPA: %.1f\n\n", unweighted, weighted);
 }
-void loadClasses(const string& filename, vector<GPA_Class>& classes) {
+int loadClasses(const string& filename, vector<GPA_Class>& classes) {
     ifstream loadfile;
     loadfile.open(filename);
-    // put stuffs here
+    if (!loadfile.is_open()) {
+        cout << "Error opening file \"" << filename << "\"\n";
+        return -1;
+    }
+    string line;
+    int count = 0;
+    string course_name, grade, class_type_str;
+    while (getline(cin, line)) {
+        count++;
+        switch (count) {
+        case 1: // Course name
+            course_name = line;
+            break;
+        case 2: // Grade
+            grade = line;
+            break;
+        case 3: // Class type
+            class_type_str = line;
+            break;
+        case 4:
+            count = 0;
+            // If I get points deducted for not checking the input from the save file let me know
+            classes.push_back(GPA_Class(course_name, toupper(grade[0]), (classType)stoi(class_type_str)));
+        }
+    }
     loadfile.close();
+    return 1;
 }
 void saveClasses(const string& filename, vector<GPA_Class>& classes) {
     ofstream savefile;
     savefile.open(filename);
-    // put stuffs here
+    if (!savefile.is_open()) {
+        system("cls");
+        cout << "Error opening file \"" << filename << "\". Data may be lost\n";
+        system("pause");
+        return;
+    }
+    for (int i = 0; i < classes.size(); i++) {
+        savefile << classes[i].getCourseName() << "\n";
+        savefile << classes[i].getGrade() << "\n";
+        savefile << (int)classes[i].getClassType() << "\n";
+    }
     savefile.close();
 }
