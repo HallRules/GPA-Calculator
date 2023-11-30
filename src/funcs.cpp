@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "classes.h"
 using namespace std;
 
@@ -32,6 +33,9 @@ string classTypeToString(classType class_type) {
     }
     return result;
 }
+void stripWhitespace(string& str) {
+    str.erase(std::remove_if(str.begin(), str.end(), ::isspace), str.end());
+}
 void printClass(GPA_Class& gpa_class) {
     cout << gpa_class.getCourseName() << " - " << gpa_class.getGrade() << " - " << classTypeToString(gpa_class.getClassType()) << "\n";
 }
@@ -47,6 +51,10 @@ void editClass(GPA_Class& gpa_class) {
 }
 void listClasses(vector<GPA_Class>& classes) {
     system("cls");
+    if (classes.size() == 0) {
+        cout << "No classes found.\n\n";
+        return;
+    }
     cout << "Classes: (Name, Grade, Class Type)\n\n";
     for (int i = 0; i < classes.size(); i++) {
         cout << classes[i].getCourseName() << " - " << classes[i].getGrade() << " - " << classTypeToString(classes[i].getClassType()) << "\n";
@@ -55,6 +63,12 @@ void listClasses(vector<GPA_Class>& classes) {
 }
 void calculateGPA(const vector<GPA_Class>& classes, bool weighted){
 
+}
+void loadClasses(const string& filename, vector<GPA_Class>& classes) {
+    ifstream loadfile;
+    loadfile.open(filename);
+    // put stuffs here
+    loadfile.close();
 }
 void saveClasses(const string& filename, vector<GPA_Class>& classes) {
     ofstream savefile;
