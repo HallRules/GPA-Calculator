@@ -5,6 +5,7 @@
 using namespace std;
 
 // Definitions for the functions used in main.cpp
+void clear_screen();
 string strToLower(const string& str);
 string classTypeToString(classType class_type);
 void stripWhitespace(string& str);

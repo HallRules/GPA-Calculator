@@ -11,6 +11,15 @@ using namespace std;
 // it's because it just doesn't compile and I have no clue why
 
 // The actual code for the functions defined in funcs.h
+
+void clear_screen() {
+#ifdef WINDOWS
+    std::system("cls");
+#else
+    // Assume POSIX
+    std::system ("clear");
+#endif
+}
 string strToLower(const string& str) {
     string newStr = "";
     for (int i = 0; i < str.length(); i++) {
@@ -68,7 +77,7 @@ void removeClass(vector<GPA_Class>& classes, const string& course_name) {
 // Edit class function is not implemented here, it is implemented in editClass_prompt
 // in prompts.cpp because it is easier to do it there, also I am running out of time
 void listClasses(vector<GPA_Class>& classes) {
-    system("cls");
+    clear_screen();
     if (classes.size() == 0) {
         cout << "No classes found.\n\n";
         return;
@@ -80,7 +89,7 @@ void listClasses(vector<GPA_Class>& classes) {
     cout << "\n\n";
 }
 void calculateGPA(vector<GPA_Class>& classes){
-    system("cls");
+    clear_screen();
     // For unweighted, just add up all the grades and divide by the number of classes
     // And for weighted, we add 0.5 to the grade if it's honors and 1.0 if it's AP/Dual
     double unweighted = 0, weighted = 0;
@@ -122,9 +131,9 @@ void saveClasses(const string& filename, vector<GPA_Class>& classes) {
     ofstream savefile;
     savefile.open(filename);
     if (!savefile.is_open()) {
-        system("cls");
-        cout << "Error opening file \"" << filename << "\". Data may be lost\n";
-        system("pause");
+        clear_screen();
+        cout << "Error opening file \"" << filename << "\". Data may be lost\n\nPress any key to continue . . .";
+        int buff = getchar();
         return;
     }
     for (int i = 0; i < classes.size(); i++) {

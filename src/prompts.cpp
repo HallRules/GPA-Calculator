@@ -5,7 +5,7 @@
 using namespace std;
 
 void addClass_prompt(vector<GPA_Class>& classes) {
-    system("cls");
+    clear_screen();
     cout << "Enter the name of the class (case sensitive): ";
     string course_name;
     getline(cin, course_name);
@@ -60,17 +60,17 @@ void addClass_prompt(vector<GPA_Class>& classes) {
     printClass(classes[classes.size() - 1]);
 }
 void removeClass_prompt(vector<GPA_Class>& classes) {
-    system("cls");
+    clear_screen();
     cout << "List of classes:\n";
     listClasses(classes);
     cout << "\n\nEnter the name of the class you want to remove (case sensitive):\n";
     string course_name;
     getline(cin, course_name);
-    system("cls");
+    clear_screen();
     removeClass(classes, course_name);
 }
 void editClass_prompt(vector<GPA_Class>& classes) {
-    system("cls");
+    clear_screen();
     cout << "List of classes:\n";
     listClasses(classes);
     cout << "\n\nEnter the name of the class you want to edit (case sensitive):\n";
@@ -87,7 +87,7 @@ void editClass_prompt(vector<GPA_Class>& classes) {
         cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
         return;
     }
-    system("cls");
+    clear_screen();
     printClassByName(course_name, classes);
     cout << "Type the number of the attribute you want to edit (0 for class name, 1 for grade, 2 for type of class):\n";
     string attribute_str;
@@ -173,7 +173,7 @@ void editClass_prompt(vector<GPA_Class>& classes) {
     }
 }
 void loadClasses_prompt(vector<GPA_Class>& classes) {
-    system("cls");
+    clear_screen();
     cout << "Enter the name of the savefile (has to be in the same directory):\n";
     string filename;
     getline(cin, filename);
