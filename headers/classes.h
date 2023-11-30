@@ -4,9 +4,9 @@ using namespace std;
 
 // This is the enum type for the class type
 enum class classType {
+    regular,
     honors,
     ap,
-    regular,
     dual
 };
 

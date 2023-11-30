@@ -32,10 +32,14 @@ string classTypeToString(classType class_type) {
     }
     return result;
 }
-void addClass(vector<GPA_Class>& classes) {
-
+void printClass(GPA_Class& gpa_class) {
+    cout << gpa_class.getCourseName() << " - " << gpa_class.getGrade() << " - " << classTypeToString(gpa_class.getClassType()) << "\n";
 }
-void removeClass(vector<GPA_Class>& classes) {
+void addClass(vector<GPA_Class>& classes, const string& course_name, char grade, classType class_type) {
+    GPA_Class newClass(course_name, grade, class_type);
+    classes.push_back(newClass);
+}
+void removeClass(vector<GPA_Class>& classes, const string& course_name) {
 
 }
 void editClass(GPA_Class& gpa_class) {
@@ -52,7 +56,7 @@ void listClasses(vector<GPA_Class>& classes) {
 void calculateGPA(const vector<GPA_Class>& classes, bool weighted){
 
 }
-void saveClasses(const string& filename, const vector<GPA_Class>& classes) {
+void saveClasses(const string& filename, vector<GPA_Class>& classes) {
     ofstream savefile;
     savefile.open(filename);
     // put stuffs here
