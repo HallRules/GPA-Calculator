@@ -6,7 +6,8 @@ using namespace std;
 enum class classType {
     honors,
     ap,
-    regular
+    regular,
+    dual
 };
 
 // This is the main class that defines how the classes are stored. It has a course name, grade, and class type

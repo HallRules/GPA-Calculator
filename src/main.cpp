@@ -65,6 +65,7 @@ int main_loop() {
 }
 
 int main() {
+    system("cls");
     // Breaks when return is less than 1, which is when the user wants to quit
     while (main_loop());
 
