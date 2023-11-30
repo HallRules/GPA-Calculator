@@ -67,17 +67,110 @@ void removeClass_prompt(vector<GPA_Class>& classes) {
     string course_name;
     getline(cin, course_name);
     system("cls");
-    for (int i = 0; i < classes.size(); i++) {
-        if (classes[i].getCourseName() == course_name) {
-            classes.erase(classes.begin() + i);
-            cout << "Class \"" << course_name << "\" removed successfully.\n\n";
-            return;
-        }
-    }
-    cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
+    removeClass(classes, course_name);
 }
 void editClass_prompt(vector<GPA_Class>& classes) {
-
+    system("cls");
+    cout << "List of classes:\n";
+    listClasses(classes);
+    cout << "\n\nEnter the name of the class you want to edit (case sensitive):\n";
+    string course_name;
+    getline(cin, course_name);
+    bool found = false;
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCourseName() == course_name) {
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
+        return;
+    }
+    system("cls");
+    printClassByName(course_name, classes);
+    cout << "Type the number of the attribute you want to edit (0 for class name, 1 for grade, 2 for type of class):\n";
+    string attribute_str;
+    getline(cin, attribute_str);
+    stripWhitespace(attribute_str);
+    if (attribute_str != "0" && attribute_str != "1" && attribute_str != "2") {
+        cout << "Invalid attribute. Please try again.\n\n";
+        return;
+    }
+    int attribute = stoi(attribute_str);
+    // I'm sorry for this nesting I'm just too tired bruh
+    if (attribute == 0) {
+        cout << "Enter the new name of the class:\n";
+        string new_course_name;
+        getline(cin, new_course_name);
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes[i].getCourseName() == new_course_name) {
+                cout << "A class with that name already exists. Please try again.\n";
+                return;
+            }
+        }
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes[i].getCourseName() == course_name) {
+                classes[i].setCourseName(new_course_name);
+                cout << "Class \"" << course_name << "\" name successfully changed to \"" << new_course_name << "\".\n\n";
+                return;
+            }
+        }
+    }
+    else if (attribute == 1) {
+        cout << "Enter the new grade of the class (A,B,C,D,F):\n";
+        string new_grade;
+        getline(cin, new_grade);
+        new_grade = strToLower(new_grade);
+        stripWhitespace(new_grade);
+        if (new_grade != "a" && new_grade != "b" && new_grade != "c" && new_grade != "d" && new_grade != "f") {
+            cout << "Invalid grade. Please try again.\n";
+            return;
+        }
+        new_grade[0] = toupper(new_grade[0]);
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes[i].getCourseName() == course_name) {
+                classes[i].setGrade(new_grade[0]);
+                cout << "Class \"" << course_name << "\" grade successfully changed to \"" << new_grade << "\".\n\n";
+                return;
+            }
+        }
+    }
+    else if (attribute == 2) {
+        cout << "Enter the new type of the class (0 for regular, 1 for honors, 2 for AP, 3 for dual enrollment):\n";
+        string new_class_type_str;
+        getline(cin, new_class_type_str);
+        stripWhitespace(new_class_type_str);
+        if (new_class_type_str != "0" && new_class_type_str != "1" && new_class_type_str != "2" && new_class_type_str != "3") {
+            cout << "Invalid class type. Please try again.\n";
+            return;
+        }
+        classType new_class_type;
+        switch (stoi(new_class_type_str)) {
+        case 0:
+            new_class_type = classType::regular;
+            break;
+        case 1:
+            new_class_type = classType::honors;
+            break;
+        case 2:
+            new_class_type = classType::ap;
+            break;
+        case 3:
+            new_class_type = classType::dual;
+            break;
+        default:
+            cout << "Error with stoi(new_class_type_str)\n";
+            return;
+        }
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes[i].getCourseName() == course_name) {
+                classes[i].setClassType(new_class_type);
+                cout << "Class \"" << course_name << "\" type successfully changed to \"" << classTypeToString(new_class_type) << "\".\n\n";
+                return;
+            }
+        }
+    }
 }
 void loadClasses_prompt(vector<GPA_Class>& classes) {
 

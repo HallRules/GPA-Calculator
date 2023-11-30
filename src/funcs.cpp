@@ -39,16 +39,31 @@ void stripWhitespace(string& str) {
 void printClass(GPA_Class& gpa_class) {
     cout << gpa_class.getCourseName() << " - " << gpa_class.getGrade() << " - " << classTypeToString(gpa_class.getClassType()) << "\n";
 }
+void printClassByName(const string& course_name, vector<GPA_Class>& classes) {
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCourseName() == course_name) {
+            printClass(classes[i]);
+            return;
+        }
+    }
+    cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
+}
 void addClass(vector<GPA_Class>& classes, const string& course_name, char grade, classType class_type) {
     GPA_Class newClass(course_name, grade, class_type);
     classes.push_back(newClass);
 }
 void removeClass(vector<GPA_Class>& classes, const string& course_name) {
-
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCourseName() == course_name) {
+            classes.erase(classes.begin() + i);
+            cout << "Class \"" << course_name << "\" removed successfully.\n\n";
+            return;
+        }
+    }
+    cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
 }
-void editClass(GPA_Class& gpa_class) {
-
-}
+// Edit class function is not implemented here, it is implemented in editClass_prompt
+// in prompts.cpp because it is easier to do it there, also I am running out of time
 void listClasses(vector<GPA_Class>& classes) {
     system("cls");
     if (classes.size() == 0) {
