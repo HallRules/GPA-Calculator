@@ -21,8 +21,8 @@ void addClass_prompt(vector<GPA_Class>& classes) {
     }
     cout << "Enter the grade you got in the class (only A,B,C,D,F): ";
     string grade;
-    grade = strToLower(grade);
     getline(cin, grade);
+    grade = strToLower(grade);
     stripWhitespace(grade);
     // No switch case for strings in C++
     if (grade != "a" && grade != "b" && grade != "c" && grade != "d" && grade != "f") {
@@ -30,7 +30,7 @@ void addClass_prompt(vector<GPA_Class>& classes) {
         return;
     }
     grade[0] = toupper(grade[0]);
-    cout << "Enter the number for the of class (0 for regular, 1 for honors, 2 for AP, 3 for dual enrollment): ";
+    cout << "Enter the number for the type of class (0 for regular, 1 for honors, 2 for AP, 3 for dual enrollment): ";
     string class_type_str;
     getline(cin, class_type_str);
     stripWhitespace(class_type_str);
