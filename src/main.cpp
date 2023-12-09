@@ -28,7 +28,7 @@ int main_loop() {
     command = strToLower(command);
     stripWhitespace(command);
     
-    // Since C++ doesn't support switch/case for strings, I had to spam if/else statements
+    // No support for strings in switch case
     if (command == "add") {
         addClass_prompt(classes);
     }
@@ -56,13 +56,14 @@ int main_loop() {
         cout << "Invalid command. Please try again.\n";
     }
 
-    // To continue the loop and not quit the program, we return 1
+    // To continue the loop and not quit the program, return 1
     return 1;
 }
 
 int main() {
     clear_screen();
     // Breaks when return is less than 1, which is when the user wants to quit
+    // 1 evaluates to true, 0 evaluates to false
     while (main_loop());
 
     // This last code handles the saving and quitting, because when the main loop returns 0 it will break the loop.
