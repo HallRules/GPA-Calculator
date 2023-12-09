@@ -7,11 +7,6 @@
 #include "classes.h"
 using namespace std;
 
-// Also if you're wondering why I don't put const for the GPA_Class vectors,
-// it's because it just doesn't compile and I have no clue why
-
-// The actual code for the functions defined in funcs.h
-
 void clear_screen() {
 #ifdef WINDOWS
     std::system("cls");
@@ -74,8 +69,6 @@ void removeClass(vector<GPA_Class>& classes, const string& course_name) {
     }
     cout << "Class \"" << course_name << "\" not found. Please try again.\n\n";
 }
-// Edit class function is not implemented here, it is implemented in editClass_prompt
-// in prompts.cpp because it is easier to do it there, also I am running out of time
 void listClasses(vector<GPA_Class>& classes) {
     clear_screen();
     if (classes.size() == 0) {
