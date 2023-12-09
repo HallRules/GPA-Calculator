@@ -24,7 +24,6 @@ void addClass_prompt(vector<GPA_Class>& classes) {
     getline(cin, grade);
     grade = strToLower(grade);
     stripWhitespace(grade);
-    // No switch case for strings in C++
     if (grade != "a" && grade != "b" && grade != "c" && grade != "d" && grade != "f") {
         cout << "Invalid grade. Please try again.\n";
         return;
@@ -98,7 +97,6 @@ void editClass_prompt(vector<GPA_Class>& classes) {
         return;
     }
     int attribute = stoi(attribute_str);
-    // I'm sorry for this nesting I'm just too tired bruh
     if (attribute == 0) {
         cout << "Enter the new name of the class:\n";
         string new_course_name;
