@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B8n6OZ5tmxfl59A2A7Kb50rmCTk+C/BtLSck6z7RzNPhAoE2YiIqFKo54Icd/c5ynym5H5QSCUhpakLYGs61Yg==",
+  "success": true,
+  "projectFilePath": "E:\\VSE code\\gpa calculator-git\\gpa calculator\\gpa calculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.10\\microsoft.aspnetcore.spaproxy.7.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
