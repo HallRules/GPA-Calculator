@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/gpa calculator/bin/Debug/net7.0
+/.gitignore
+/gpa calculator/bin/Debug/net8.0
+/gpa calculator/obj/Debug/net8.0
