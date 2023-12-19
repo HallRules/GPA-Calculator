@@ -61,7 +61,7 @@ export class Calculator extends Component {
         let totalGradePoints = 0;
         let totalWeightedGradePoints = 0;
         let totalClasses = 0;
-
+        
         this.state.classes.forEach(classItem => {
             if (classItem.grade in gradePoints && classItem.classType in classTypes) {
                 totalGradePoints += gradePoints[classItem.grade];
