@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using gpa_calculator.Models;
 using gpa_calculator.Data;
 
 namespace gpa_calculator

@@ -21,8 +21,19 @@ namespace gpa_calculator.Controllers
             _context = context;
         }
 
-        // GET: GPAContexts
         [HttpGet]
+        public List<GPAContext> Get()
+        {
+            return Enumerable.Range(1, 5).Select(index => new GPAContext
+            {
+                ID = index,
+                ClassName = "Class " + index,
+                Grade = "Grade " + index,
+                StudentID = "StudentID " + index
+            }).ToList();
+        }
+
+        // GET: GPAContexts
         public async Task<IActionResult> Index()
         {
             return View(await _context.GPAContext.ToListAsync());

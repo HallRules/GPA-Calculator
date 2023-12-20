@@ -82,7 +82,7 @@ export class Calculator extends Component {
 
     async fetchData() {
         const response = await fetch('gpacontext', {method: 'GET'});
-        const data = await response.text();
+        const data = await response.json();
         console.log(data);
     }
 
