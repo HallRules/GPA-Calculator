@@ -80,6 +80,12 @@ export class Calculator extends Component {
         }
     }
 
+    async fetchData() {
+        const response = await fetch('gpacontext', {method: 'GET'});
+        const data = await response.text();
+        console.log(data);
+    }
+
 
     render() {
         return (
@@ -135,6 +141,8 @@ export class Calculator extends Component {
                 </table>
                 <button onClick={this.addClass}>Add Class</button>
                 <button onClick={this.calculateGPA}>Calculate Total GPA</button>
+                <p />
+                <button onClick={this.fetchData}>Test</button>
                 {this.state.unweightedGPA !== null && <p><strong>Unweighted GPA:</strong> {this.state.unweightedGPA.toFixed(2)}</p>}
                 {this.state.weightedGPA !== null && <p><strong>Weighted GPA:</strong> {this.state.weightedGPA.toFixed(2)}</p>}
             </div>

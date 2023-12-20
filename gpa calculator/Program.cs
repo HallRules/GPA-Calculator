@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using gpa_calculator.Data;
 
 namespace gpa_calculator
 {
@@ -6,6 +9,8 @@ namespace gpa_calculator
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<gpa_calculatorContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("gpa_calculatorContext") ?? throw new InvalidOperationException("Connection string 'gpa_calculatorContext' not found.")));
 
             // Add services to the container.
 
