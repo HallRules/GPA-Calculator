@@ -13,14 +13,7 @@ namespace gpa_calculator
 
             builder.Services.AddDbContext<gpa_calculatorContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("gpa_calculatorContext") ?? throw new InvalidOperationException("Connection string 'gpa_calculatorContext' not found."),
-        sqlServerOptionsAction: sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 5,
-                maxRetryDelay: TimeSpan.FromSeconds(10),
-                errorNumbersToAdd: null);
-        }));
+        builder.Configuration.GetConnectionString("gpa_calculatorContext") ?? throw new InvalidOperationException("Connection string 'gpa_calculatorContext' not found.")));
 
 
             // Add services to the container.
