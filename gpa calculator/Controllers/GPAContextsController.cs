@@ -22,16 +22,11 @@ namespace gpa_calculator.Controllers
         }
 
         [HttpGet]
-        public List<GPAContext> Get()
+        public async Task<ActionResult<IEnumerable<GPAContext>>> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new GPAContext
-            {
-                ID = index,
-                ClassName = "Class " + index,
-                Grade = "Grade " + index,
-                StudentID = "StudentID " + index
-            }).ToList();
+            return await _context.GPAContext.ToListAsync();
         }
+
 
         // GET: GPAContexts
         public async Task<IActionResult> Index()
