@@ -9,6 +9,10 @@ namespace gpa_calculator.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GPAContext>().ToTable("StudentGrades");
+        }
 
         public DbSet<GPAContext> GPAContext { get; set; } = default!;
     }
