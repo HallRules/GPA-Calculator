@@ -7,6 +7,7 @@ export class Calculator extends Component {
         super(props);
         this.state = {
             classes: [{ className: '', classType: 'Regular', grade: 'A+' }],
+            data: null,
             unweightedGPA: null,
             weightedGPA: null
         };
@@ -14,6 +15,7 @@ export class Calculator extends Component {
         this.removeClass = this.removeClass.bind(this);
         this.calculateGPA = this.calculateGPA.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.fetchData = this.fetchData.bind(this);
     }
 
     addClass() {
@@ -82,8 +84,9 @@ export class Calculator extends Component {
 
     async fetchData() {
         const response = await fetch('gpacontext', {method: 'GET'});
-        const data = await response.text();
-        console.log(data);
+        const data = await response.json();
+        console.log(data)
+        this.setState({ data: data });
     }
 
 
@@ -145,6 +148,8 @@ export class Calculator extends Component {
                 <button onClick={this.fetchData}>Test</button>
                 {this.state.unweightedGPA !== null && <p><strong>Unweighted GPA:</strong> {this.state.unweightedGPA.toFixed(2)}</p>}
                 {this.state.weightedGPA !== null && <p><strong>Weighted GPA:</strong> {this.state.weightedGPA.toFixed(2)}</p>}
+                <p />
+                {this.state.data !== null && <p>{JSON.stringify(this.state.data)}</p>}
             </div>
         );
     }
