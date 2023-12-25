@@ -9,13 +9,15 @@ export class Calculator extends Component {
             classes: [{ className: '', classType: 'Regular', grade: 'A+' }],
             data: null,
             unweightedGPA: null,
-            weightedGPA: null
+            weightedGPA: null,
+            studentID: '0712842'
         };
         this.addClass = this.addClass.bind(this);
         this.removeClass = this.removeClass.bind(this);
         this.calculateGPA = this.calculateGPA.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.fetchData = this.fetchData.bind(this);
+        this.handleStudentIDChange = this.handleStudentIDChange.bind(this);
     }
 
     addClass() {
@@ -42,6 +44,10 @@ export class Calculator extends Component {
             classes[index][name] = value;
             return { classes };
         });
+    }
+
+    handleStudentIDChange = (event) => {
+        this.setState({ studentID: event.target.value });
     }
 
     calculateGPA() {
@@ -83,12 +89,13 @@ export class Calculator extends Component {
     }
 
     async fetchData() {
-        const response = await fetch('gpacontext', {method: 'GET'});
+        const response = await fetch('gpacontext', { method: 'GET' });
         const data = await response.json();
-        console.log(data)
+        const filteredData = data.filter(item => item.studentID === this.state.studentID)
+            .map(({ id, grade, ...rest }) => ({ grade: grade.trim(), ...rest })); // remove id and trim grade
+        this.setState({ classes: filteredData });
         this.setState({ data: data });
     }
-
 
     render() {
         return (
@@ -150,6 +157,13 @@ export class Calculator extends Component {
                 {this.state.weightedGPA !== null && <p><strong>Weighted GPA:</strong> {this.state.weightedGPA.toFixed(2)}</p>}
                 <p />
                 {this.state.data !== null && <p>{JSON.stringify(this.state.data)}</p>}
+                <p>Current studentID:</p>
+                <input
+                    type="text"
+                    value={this.state.studentID}
+                    onChange={this.handleStudentIDChange}
+                />
+                <p />
             </div>
         );
     }
