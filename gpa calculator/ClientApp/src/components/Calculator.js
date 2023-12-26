@@ -18,6 +18,7 @@ export class Calculator extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.fetchData = this.fetchData.bind(this);
         this.handleStudentIDChange = this.handleStudentIDChange.bind(this);
+        this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
     }
 
     addClass() {
@@ -97,6 +98,37 @@ export class Calculator extends Component {
         this.setState({ data: data });
     }
 
+    async handleSaveButtonClick() {
+        // Get the latest revision for the current student
+        const response = await fetch('gpacontext', { method: 'GET' });
+        const data = await response.json();
+        const itemsForStudent = data.filter(item => item.studentID === this.state.studentID);
+        const latestRevision = Math.max(...itemsForStudent.map(item => item.revision));
+
+        // Prepare the data to be saved
+        const classesToSave = this.state.classes.map((classItem) => ({
+            ...classItem,
+            studentID: this.state.studentID,
+            revision: latestRevision + 1,
+        }));
+
+        // Post the data
+        const saveResponse = await fetch('/gpacontext/Create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(classesToSave)
+        });
+
+        if (!saveResponse.ok) {
+            // Handle the error
+            console.error('Error saving data: ' + saveResponse.text());
+        }
+        else {
+            console.log('Data saved successfully!');
+        }
+    }
     render() {
         return (
             <div>
@@ -164,6 +196,7 @@ export class Calculator extends Component {
                     onChange={this.handleStudentIDChange}
                 />
                 <p />
+                <button onClick={this.handleSaveButtonClick}>Save Data</button>
             </div>
         );
     }

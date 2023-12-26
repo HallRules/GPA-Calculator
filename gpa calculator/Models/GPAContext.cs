@@ -7,5 +7,6 @@
         public string? ClassType { get; set; }
         public string? Grade { get; set; }
         public string? StudentID { get; set; }
+        public int Revision { get; set; }
     }
 }

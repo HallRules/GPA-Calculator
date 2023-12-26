@@ -53,20 +53,21 @@ namespace gpa_calculator.Controllers
         }
 
         // GET: GPAContexts/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: GPAContexts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ClassName,ClassType,Grade,StudentID")] GPAContext gPAContext)
+        [Route("gpacontext/Create")]
+        public async Task<IActionResult> Create([Bind("ID,ClassName,ClassType,Grade,StudentID,Revision")] GPAContext gPAContext)
         {
             if (ModelState.IsValid)
             {
+                gPAContext.Revision++;
                 _context.Add(gPAContext);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -94,8 +95,7 @@ namespace gpa_calculator.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ClassName,ClassType,Grade,StudentID")] GPAContext gPAContext)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,ClassName,ClassType,Grade,StudentID,Revision")] GPAContext gPAContext)
         {
             if (id != gPAContext.ID)
             {
@@ -145,7 +145,6 @@ namespace gpa_calculator.Controllers
 
         // POST: GPAContexts/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var gPAContext = await _context.GPAContext.FindAsync(id);
