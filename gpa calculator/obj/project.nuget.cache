@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YnVCfAmWAKyAZOfJOcOxYl2dID+TTIUAV47MdGI/2HXU579Jf1hVkIyG4GpP3+TdSD7ws3D6hOYJeKsqRToZyg==",
+  "dgSpecHash": "X8ks1y8Ez5iUYeFwTK7CjnWCyCXRW9gunyZ0Vn1VYAbQaMY2hsIqIFbZ+AKlrj3p5X2xupFrTzXROS7YKYQFDw==",
   "success": true,
-  "projectFilePath": "E:\\VSE code\\gpa calculator-git\\gpa calculator\\gpa calculator.csproj",
+  "projectFilePath": "E:\\VSE code\\gpa calculator\\gpa calculator\\gpa calculator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -65,7 +65,6 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.0\\microsoft.aspnetcore.components.web.8.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.0\\microsoft.aspnetcore.metadata.8.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.10\\microsoft.aspnetcore.spaproxy.7.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.build\\17.7.2\\microsoft.build.17.7.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.build.framework\\17.7.2\\microsoft.build.framework.17.7.2.nupkg.sha512",

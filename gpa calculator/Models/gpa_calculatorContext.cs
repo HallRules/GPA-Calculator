@@ -16,16 +16,14 @@ namespace gpa_calculator.Models
         }
 
         public virtual DbSet<StudentGrades> StudentGrades { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=HALLRULES\\SQLEXPRESS;Database=gpa_calculator;Integrated Security=True");
+           if (!optionsBuilder.IsConfigured)
+          {
+               optionsBuilder.UseSqlServer("Server=HALLRULES\\SQLEXPRESS;Database=gpa_calculator;User Id=sa;Password=G-rock911;");
+           //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StudentGrades>(entity =>
