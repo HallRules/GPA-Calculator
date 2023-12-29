@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
+using gpa_calculator.Data;
 
 namespace gpa_calculator
 {
@@ -21,12 +23,15 @@ namespace gpa_calculator
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("gpa_calculatorContext");
             services.AddDbContext<gpa_calculatorContext>(options => options.UseSqlServer(connection));
-
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<gpa_calculatorContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
         }
 

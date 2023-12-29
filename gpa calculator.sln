@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gpa calculator", "gpa calculator\gpa calculator.csproj", "{72943CC9-8608-4EA5-AA3A-AFD0E579BE0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gpa calculator", "gpa calculator\gpa calculator.csproj", "{86B1084B-B923-41BA-A007-D664A8057002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72943CC9-8608-4EA5-AA3A-AFD0E579BE0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72943CC9-8608-4EA5-AA3A-AFD0E579BE0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72943CC9-8608-4EA5-AA3A-AFD0E579BE0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72943CC9-8608-4EA5-AA3A-AFD0E579BE0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B1084B-B923-41BA-A007-D664A8057002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B1084B-B923-41BA-A007-D664A8057002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B1084B-B923-41BA-A007-D664A8057002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B1084B-B923-41BA-A007-D664A8057002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8E6D91AE-0DD4-49CD-BC8A-AC742EF9690C}
+		SolutionGuid = {D6B44BFF-6D2C-468A-B0C0-69FE0D3C15EE}
 	EndGlobalSection
 EndGlobal

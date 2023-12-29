@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\VSE code\\gpa calculator\\gpa calculator\\gpa calculator.csproj": {}
+    "E:\\VSE code\\gpa-calc-with-auth\\gpa calculator\\gpa calculator\\gpa calculator.csproj": {}
   },
   "projects": {
-    "E:\\VSE code\\gpa calculator\\gpa calculator\\gpa calculator.csproj": {
+    "E:\\VSE code\\gpa-calc-with-auth\\gpa calculator\\gpa calculator\\gpa calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\VSE code\\gpa calculator\\gpa calculator\\gpa calculator.csproj",
+        "projectUniqueName": "E:\\VSE code\\gpa-calc-with-auth\\gpa calculator\\gpa calculator\\gpa calculator.csproj",
         "projectName": "gpa calculator",
-        "projectPath": "E:\\VSE code\\gpa calculator\\gpa calculator\\gpa calculator.csproj",
+        "projectPath": "E:\\VSE code\\gpa-calc-with-auth\\gpa calculator\\gpa calculator\\gpa calculator.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\VSE code\\gpa calculator\\gpa calculator\\obj\\",
+        "outputPath": "E:\\VSE code\\gpa-calc-with-auth\\gpa calculator\\gpa calculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,13 +48,27 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
             },

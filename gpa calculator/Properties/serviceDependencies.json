@@ -1,11 +1,9 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets"
-    },
-    "mssql1": {
+    "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:gpa_calculatorContext"
+      "connectionId": "ConnectionStrings:gpa_calculatorContext",
+      "dynamicId": null
     }
   }
 }
