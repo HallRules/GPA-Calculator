@@ -1,9 +1,8 @@
 {
   "dependencies": {
-    "mssql2": {
+    "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:gpa_calculatorContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:gpa_calculator"
     }
   }
 }

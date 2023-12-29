@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "mssql2": {
+    "mssql1": {
       "serviceConnectorResourceId": "",
       "secretStore": "LocalSecretsFile",
+      "resourceId": null,
       "type": "mssql.local",
-      "connectionId": "ConnectionStrings:gpa_calculatorContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:gpa_calculator"
     }
   }
 }

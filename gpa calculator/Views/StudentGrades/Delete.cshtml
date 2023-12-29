@@ -1,4 +1,4 @@
-﻿@model gpa_calculator.Models.StudentGrades
+﻿@model gpa_calculator.StudentGrades
 
 @{
     ViewData["Title"] = "Delete";
@@ -36,15 +36,15 @@
             @Html.DisplayFor(model => model.Grade)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
+            @Html.DisplayNameFor(model => model.StudentID)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
+            @Html.DisplayFor(model => model.StudentID)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

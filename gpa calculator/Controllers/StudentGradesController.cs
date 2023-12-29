@@ -5,25 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using gpa_calculator.Models;
+using gpa_calculator;
+using gpa_calculator.Data;
 
 namespace gpa_calculator.Controllers
 {
     public class StudentGradesController : Controller
     {
-        private readonly gpa_calculatorContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public StudentGradesController(gpa_calculatorContext context)
+        public StudentGradesController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        //public void ConfigureServices(IServiceCollection services)
-        //{
-        //    var connection = "Server=HALLRULES\\SQLEXPRESS;Database=gpa_calculator;User Id=sa;Password=G-rock911;";
-        //    services.AddDbContext<gpa_calculatorContext>(options => options.UseSqlServer(connection));
-        //    services.AddControllersWithViews();
-        //}
 
         // GET: StudentGrades
         public async Task<IActionResult> Index()
@@ -40,7 +34,7 @@ namespace gpa_calculator.Controllers
             }
 
             var studentGrades = await _context.StudentGrades
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (studentGrades == null)
             {
                 return NotFound();
@@ -60,7 +54,7 @@ namespace gpa_calculator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Revision,ClassName,ClassType,Grade,StudentId")] StudentGrades studentGrades)
+        public async Task<IActionResult> Create([Bind("ID,Revision,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
         {
             if (ModelState.IsValid)
             {
@@ -92,9 +86,9 @@ namespace gpa_calculator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Revision,ClassName,ClassType,Grade,StudentId")] StudentGrades studentGrades)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Revision,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
         {
-            if (id != studentGrades.Id)
+            if (id != studentGrades.ID)
             {
                 return NotFound();
             }
@@ -108,7 +102,7 @@ namespace gpa_calculator.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentGradesExists(studentGrades.Id))
+                    if (!StudentGradesExists(studentGrades.ID))
                     {
                         return NotFound();
                     }
@@ -131,7 +125,7 @@ namespace gpa_calculator.Controllers
             }
 
             var studentGrades = await _context.StudentGrades
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (studentGrades == null)
             {
                 return NotFound();
@@ -157,7 +151,7 @@ namespace gpa_calculator.Controllers
 
         private bool StudentGradesExists(int id)
         {
-            return _context.StudentGrades.Any(e => e.Id == id);
+            return _context.StudentGrades.Any(e => e.ID == id);
         }
     }
 }
