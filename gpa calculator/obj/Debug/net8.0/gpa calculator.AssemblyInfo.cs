@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f757d2b8030b91f22e976d029c3d87f95357f3a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0dca7ac85f4ad0995d9ea555108d4670115d2ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

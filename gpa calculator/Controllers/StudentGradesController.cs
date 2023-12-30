@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using gpa_calculator;
 using gpa_calculator.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace gpa_calculator.Controllers
 {
+    [Authorize]
     public class StudentGradesController : Controller
     {
         private readonly ApplicationDbContext _context;
