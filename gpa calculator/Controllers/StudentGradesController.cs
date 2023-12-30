@@ -22,7 +22,9 @@ namespace gpa_calculator.Controllers
         // GET: StudentGrades
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StudentGrades.ToListAsync());
+            var table = await _context.StudentGrades.ToListAsync();
+            var studentGrades = table.Where(s => s.StudentID == User.Identity.Name);
+            return View(studentGrades);
         }
 
         // GET: StudentGrades/Details/5

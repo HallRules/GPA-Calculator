@@ -12,11 +12,11 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-gpa_calculator-6632933f-3868-4d94-85d5-75c2b53a7922")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-gpa_calculator-a8bea851-bc07-42f3-b17f-24bebde6998c")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f757d2b8030b91f22e976d029c3d87f95357f3a0")]
 [assembly: System.Reflection.AssemblyProductAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gpa calculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
