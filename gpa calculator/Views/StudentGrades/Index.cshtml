@@ -6,7 +6,12 @@
 
 <h1>Index</h1>
 
+@* Debug stuff mostly *@
 <p>Current username: @User.Identity.Name</p>
+<p>Weighted GPA: @ViewBag.weightedGPA.ToString("F2")</p>
+<p>Unweighted GPA: @ViewBag.unweightedGPA.ToString("F2")</p>
+<p>Latest Revision (currently displayed): @ViewBag.latestRevision</p>
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,9 +19,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Revision)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ClassName)
             </th>
@@ -26,36 +28,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.Grade)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentID)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Revision)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

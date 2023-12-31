@@ -21,11 +21,55 @@ namespace gpa_calculator.Controllers
             _context = context;
         }
 
+        private Dictionary<string, double> gradeValues =  new() {
+            {"A+", 4.0}, {"A", 4.0}, {"A-", 3.7},
+            {"B+", 3.3}, {"B", 3.0}, {"B-", 2.7},
+            {"C+", 2.3}, {"C", 2.0}, {"C-", 1.7},
+            {"D+", 1.3}, {"D", 1.0}, {"D-", 0.7},
+            {"F+", 0.3}, {"F", 0.0}, {"F-", 0.0}
+        };
+        
+        private Dictionary<string, double> classTypes = new() {
+            {"Regular", 0},
+            {"Honors", 0.5},
+            {"AP", 1.0},
+            {"DE", 1.0}
+        };
+
         // GET: StudentGrades
         public async Task<IActionResult> Index()
         {
             var table = await _context.StudentGrades.ToListAsync();
             var studentGrades = table.Where(s => s.StudentID == User.Identity.Name);
+            var latestRevision = studentGrades.ToArray()[studentGrades.Count() - 1].Revision;
+            studentGrades = studentGrades.Where(s => s.Revision == latestRevision);
+
+            double weightedGPA = 0;
+            double unweightedGPA = 0;
+            int totalClasses = 0;
+
+            foreach (var classItem in studentGrades)
+            {
+                var grade = classItem.Grade.Trim();
+                var classType = classItem.ClassType.Trim();
+                if (gradeValues.ContainsKey(grade) && classTypes.ContainsKey(classType))
+                {
+                    unweightedGPA += gradeValues[grade];
+                    weightedGPA += gradeValues[grade] + classTypes[classType];
+                    totalClasses += 1;
+                }
+            }
+
+            if (totalClasses > 0) {
+                weightedGPA /= totalClasses;
+                unweightedGPA /= totalClasses;
+            }
+
+            ViewBag.weightedGPA = weightedGPA;
+            ViewBag.unweightedGPA = unweightedGPA;
+            ViewBag.latestRevision = latestRevision; // this is how you pass data to the view
+            // You would access this in the view with @ViewBag["latestRevision"] or @ViewBag.latestRevision
+
             return View(studentGrades);
         }
 
