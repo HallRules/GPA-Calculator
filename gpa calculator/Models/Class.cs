@@ -11,9 +11,9 @@ namespace gpa_calculator
         [Required]
         public Int32 ID { get; set; }
 
-        [Display(Name = "Revision")]
+        [Display(Name = "Quarter")]
         [Required]
-        public Int32 Revision { get; set; }
+        public Int32 Quarter { get; set; }
 
         [Display(Name = "ClassName")]
         [StringLength(50)]

@@ -41,8 +41,8 @@ namespace gpa_calculator.Controllers
         {
             var table = await _context.StudentGrades.ToListAsync();
             var studentGrades = table.Where(s => s.StudentID == User.Identity.Name);
-            var latestRevision = studentGrades.ToArray()[studentGrades.Count() - 1].Revision;
-            studentGrades = studentGrades.Where(s => s.Revision == latestRevision);
+            var latestQuarter = studentGrades.ToArray()[studentGrades.Count() - 1].Quarter;
+            studentGrades = studentGrades.Where(s => s.Quarter == latestQuarter);
 
             double weightedGPA = 0;
             double unweightedGPA = 0;
@@ -67,7 +67,7 @@ namespace gpa_calculator.Controllers
 
             ViewBag.weightedGPA = weightedGPA;
             ViewBag.unweightedGPA = unweightedGPA;
-            ViewBag.latestRevision = latestRevision; // this is how you pass data to the view
+            ViewBag.latestQuarter = latestQuarter; // this is how you pass data to the view
             // You would access this in the view with @ViewBag["latestRevision"] or @ViewBag.latestRevision
 
             return View(studentGrades);
@@ -102,7 +102,7 @@ namespace gpa_calculator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Revision,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
+        public async Task<IActionResult> Create([Bind("ID,Quarter,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +134,7 @@ namespace gpa_calculator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Revision,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Quarter,ClassName,ClassType,Grade,StudentID")] StudentGrades studentGrades)
         {
             if (id != studentGrades.ID)
             {
