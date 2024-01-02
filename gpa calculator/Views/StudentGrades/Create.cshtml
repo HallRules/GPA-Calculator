@@ -14,7 +14,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Quarter" class="control-label"></label>
-                <input asp-for="Quarter" class="form-control" />
+                <select asp-for="Quarter" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
                 <span asp-validation-for="Quarter" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -24,30 +29,53 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClassType" class="control-label"></label>
-                <input asp-for="ClassType" class="form-control" />
+                <select asp-for="ClassType" class="form-control">
+                    <option value="Regular">Regular</option>
+                    <option value="Honors">Honors</option>
+                    <option value="AP">Advanced Placement</option>
+                    <option value="DE">Dual Enrollment</option>
+                </select>
                 <span asp-validation-for="ClassType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
+                <select asp-for="Grade" class="form-control">
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="D-">D-</option>
+                    <option value="F+">F+</option>
+                    <option value="F">F</option>
+                    <option value="F-">F-</option>
+                </select>
                 <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StudentID" class="control-label"></label>
-                <input asp-for="StudentID" class="form-control" />
+                <input asp-for="StudentID" class="form-control" type="hidden" value=@User.Identity.Name />
                 <span asp-validation-for="StudentID" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

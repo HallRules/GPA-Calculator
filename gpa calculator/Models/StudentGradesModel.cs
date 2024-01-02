@@ -15,11 +15,11 @@ namespace gpa_calculator
         [Required]
         public Int32 Quarter { get; set; }
 
-        [Display(Name = "ClassName")]
+        [Display(Name = "Class Name")]
         [StringLength(50)]
         public String ClassName { get; set; }
 
-        [Display(Name = "ClassType")]
+        [Display(Name = "Class Type")]
         [StringLength(50)]
         public String ClassType { get; set; }
 

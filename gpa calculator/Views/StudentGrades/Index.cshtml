@@ -6,50 +6,77 @@
 
 <h1>Index</h1>
 
-@* Debug stuff mostly *@
 <p>Current username: @User.Identity.Name</p>
-<p>Weighted GPA: @ViewBag.weightedGPA.ToString("F2")</p>
-<p>Unweighted GPA: @ViewBag.unweightedGPA.ToString("F2")</p>
-<p>Latest quarter (currently displayed): @ViewBag.latestQuarter</p>
-
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClassName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClassType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+@{
+    var quarterTables = ViewBag.QuarterTables as List<IEnumerable<gpa_calculator.StudentGrades>>;
+    var gpas = ViewBag.GPAs as double[];
+
+    for (int i = 0; i < 4; i++) {
+        <h2>Quarter @(i + 1)</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClassName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClassType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grade)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!quarterTables[i].Any()) {
+                    <tr>
+                        <td colspan="4">No classes found for this quarter.</td>
+                    </tr>
+                }
+                else {
+                    @foreach (var item in quarterTables[i]) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClassName)
+                            </td>
+                            <td>
+                                @if (item.ClassType == "AP")
+                                {
+                                    <text>Advanced Placement</text>
+                                }
+                                else if (item.ClassType == "DE")
+                                {
+                                    <text>Dual Enrollment</text>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.ClassType)
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Grade)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <p>
+            <strong>Weighted GPA:</strong> @gpas[i].ToString("F2")
+            <br>
+            <strong>Unweighted GPA:</strong> @gpas[i + 4].ToString("F2")
+            <br><br><br>
+        </p>
+    }
+}

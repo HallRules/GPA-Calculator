@@ -41,37 +41,55 @@ namespace gpa_calculator.Controllers
         {
             var table = await _context.StudentGrades.ToListAsync();
             var studentGrades = table.Where(s => s.StudentID == User.Identity.Name);
-            var latestQuarter = studentGrades.ToArray()[studentGrades.Count() - 1].Quarter;
-            studentGrades = studentGrades.Where(s => s.Quarter == latestQuarter);
 
-            double weightedGPA = 0;
-            double unweightedGPA = 0;
-            int totalClasses = 0;
+            var quarterTables = new List<IEnumerable<gpa_calculator.StudentGrades>> {
+                studentGrades.Where(s => s.Quarter == 1),
+                studentGrades.Where(s => s.Quarter == 2),
+                studentGrades.Where(s => s.Quarter == 3),
+                studentGrades.Where(s => s.Quarter == 4)
+            };
 
-            foreach (var classItem in studentGrades)
+            double totalWeightedGPA = 0;
+            double totalUnweightedGPA = 0;
+            int allClasses = 0;
+
+            double[] gpas = new double[8];
+            for (int i = 0; i < 4; i++)
             {
-                var grade = classItem.Grade.Trim();
-                var classType = classItem.ClassType.Trim();
-                if (gradeValues.ContainsKey(grade) && classTypes.ContainsKey(classType))
-                {
-                    unweightedGPA += gradeValues[grade];
-                    weightedGPA += gradeValues[grade] + classTypes[classType];
-                    totalClasses += 1;
+                double weightedGPA = 0;
+                double unweightedGPA = 0;
+                int totalClasses = 0;
+
+                foreach (var classItem in quarterTables[i]){
+                    var grade = classItem.Grade.Trim();
+                    var classType = classItem.ClassType.Trim();
+                    if (gradeValues.ContainsKey(grade) && classTypes.ContainsKey(classType))
+                    {
+                        unweightedGPA += gradeValues[grade];
+                        weightedGPA += gradeValues[grade] + classTypes[classType];
+                        totalUnweightedGPA += gradeValues[grade];
+                        totalWeightedGPA += gradeValues[grade] + classTypes[classType];
+                        totalClasses += 1;
+                        allClasses += 1;
+                    }
                 }
+
+                if (totalClasses > 0)
+                {
+                    weightedGPA /= totalClasses;
+                    unweightedGPA /= totalClasses;
+                }
+
+                gpas[i] = weightedGPA;
+                gpas[i + 4] = unweightedGPA;
             }
 
-            if (totalClasses > 0) {
-                weightedGPA /= totalClasses;
-                unweightedGPA /= totalClasses;
-            }
-
-            ViewBag.weightedGPA = weightedGPA;
-            ViewBag.unweightedGPA = unweightedGPA;
-            ViewBag.latestQuarter = latestQuarter; // this is how you pass data to the view
-            // You would access this in the view with @ViewBag["latestRevision"] or @ViewBag.latestRevision
+            ViewBag.GPAs = gpas;
+            ViewBag.QuarterTables = quarterTables;
 
             return View(studentGrades);
         }
+
 
         // GET: StudentGrades/Details/5
         public async Task<IActionResult> Details(int? id)
