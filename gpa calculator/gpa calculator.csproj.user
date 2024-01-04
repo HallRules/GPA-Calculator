@@ -14,5 +14,6 @@
     <WebStackScaffolding_DbContextTypeFullName>gpa_calculator.Data.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <NameOfLastUsedPublishProfile>E:\VSE code\gpa-calc-with-auth2\gpa calculator\gpa calculator\Properties\PublishProfiles\gpacalculator0712842 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
