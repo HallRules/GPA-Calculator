@@ -5,3 +5,7 @@
 /.vs
 /gpa calculator/bin/Debug/net8.0
 /gpa calculator/obj/Debug/net8.0
+/gpa calculator/bin/Release/net8.0
+/gpa calculator/obj/Release/net8.0/PubTmp
+/gpa calculator/obj/Release/net8.0
+/gpa calculator/Properties
