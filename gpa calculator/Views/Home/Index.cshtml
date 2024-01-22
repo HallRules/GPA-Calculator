@@ -1,11 +1,120 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<style>
+    table {
+        margin: auto;
+        border-collapse: collapse;
+        border-spacing: 10px;
+    }
+    th, td {
+        padding: 5px;
+        border: 1px solid black;
+    }
+</style>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <br/>
     <p>Click <a href="StudentGrades">here</a> to access the GPA calculator (you will have to sign/log in first).</p>
     <br/>
     <p>Please click <a href="https://github.com/HallRules/GPA-Calculator/">here</a> to access the GitHub repo.</p>
+    <br/>
+    <br/>
+    <p>This website is for calculating your GPA throughout the four quarters of a school year. The GPA calculator features functionality to add, delete, and edit your classes in each quarter, and it allows you to see the total GPA for each quarter and the whole year. With the login system, the website automatically saves your data so you don't have to reenter every class, unlike most existing GPA calculators.</p>
+    <p>The grading scale used for the calculation is as follows:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Letter Grade</th>
+                <th scope="col">Grade Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A+</td>
+                <td>4.0</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>4.0</td>
+            </tr>
+            <tr>
+                <td>A-</td>
+                <td>3.7</td>
+            </tr>
+            <tr>
+                <td>B+</td>
+                <td>3.3</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>3.0</td>
+            </tr>
+            <tr>
+                <td>B-</td>
+                <td>2.7</td>
+            </tr>
+            <tr>
+                <td>C+</td>
+                <td>2.3</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>2.0</td>
+            </tr>
+            <tr>
+                <td>C-</td>
+                <td>1.7</td>
+            </tr>
+            <tr>
+                <td>D+</td>
+                <td>1.3</td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>D-</td>
+                <td>0.7</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>F-</td>
+                <td>0.0</td>
+            </tr>
+        </tbody>
+    </table>
+    <p/>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Class Type</th>
+                <th scope="col">Grade Points Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Regular</td>
+                <td>+0.0</td>
+            </tr>
+            <tr>
+                <td>Honors</td>
+                <td>+0.5</td>
+            </tr>
+            <tr>
+                <td>Advanced Placement</td>
+                <td>+1.0</td>
+            </tr>
+            <tr>
+                <td>Dual Enrollment</td>
+                <td>+1.0</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
