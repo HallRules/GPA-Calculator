@@ -12,6 +12,12 @@
     <a asp-action="Create">Create New</a>
 </p>
 
+<p>
+    <strong>Weighted GPA:</strong> @ViewBag.WeightedGPA.ToString("F2")</strong>
+    <br>
+    <strong>Unweighted GPA:</strong> @ViewBag.UnweightedGPA.ToString("F2")</strong>
+</p>
+
 @{
     var quarterTables = ViewBag.QuarterTables as List<IEnumerable<gpa_calculator.StudentGrades>>;
     var gpas = ViewBag.GPAs as double[];

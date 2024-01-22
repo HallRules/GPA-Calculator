@@ -84,6 +84,8 @@ namespace gpa_calculator.Controllers
                 gpas[i + 4] = unweightedGPA;
             }
 
+            ViewBag.WeightedGPA = totalWeightedGPA / allClasses;
+            ViewBag.UnweightedGPA = totalUnweightedGPA / allClasses;
             ViewBag.GPAs = gpas;
             ViewBag.QuarterTables = quarterTables;
 
